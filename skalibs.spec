@@ -1,12 +1,12 @@
 Summary:	Essentially general-purpose libraries
 Summary(pl):	Istotne biblioteki ogólnego przeznaczenia
 Name:		skalibs
-Version:	0.43
+Version:	0.44
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.skarnet.org/software/skalibs/%{name}-%{version}.tar.gz
-# Source0-md5:	b7510392a4485bb5209e97ba3115d755
+# Source0-md5:	0e5e06a51af541a4ea15cba64d71f4d5
 URL:		http://www.skarnet.org/software/skalibs/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
