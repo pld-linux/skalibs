@@ -43,7 +43,7 @@ rozwi±zaniem.
 
 skalibs zawiera wy³±cznie kod public-domain. Mo¿na go wiêc
 rozpowszechniaæ w dowolny sposób i nie przeszkadza to w
-rozpowszechnaniu w³asnych binarek.
+rozpowszechnianiu w³asnych binarek.
 
 %package devel
 Summary:	Header files and development documentation for skalibs
