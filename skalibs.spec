@@ -61,7 +61,7 @@ Pliki nag³ówkowe i dokumentacja programisty do skalibs.
 Summary:	Static skalibs library
 Summary(pl):	Statyczna biblioteka skalibs
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static skalibs library.
