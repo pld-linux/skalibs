@@ -1,5 +1,5 @@
 Summary:	Essentially general-purpose libraries
-Summary(pl):	Istotne biblioteki ogólnego przeznaczenia
+Summary(pl.UTF-8):   Istotne biblioteki ogÃ³lnego przeznaczenia
 Name:		skalibs
 Version:	0.44
 Release:	1
@@ -27,46 +27,46 @@ skalibs contains exclusively public-domain code. So you can
 redistribute it as you want, and it does not prevent you from
 distributing any of your executables.
 
-%description -l pl
-skalibs to pakiet centralizuj±cy pliki programistyczne C bêd±ce
-w³asno¶ci± publiczn± (public-domain) u¿ywane przez autora do tworzenia
-innego oprogramowania - zawiera istotne biblioteki ogólnego
-przeznaczenia. Trzeba zainstalowaæ ten pakiet, aby móc budowaæ
-programy ze skarnet.org. Cel jest taki, ¿e nie trzeba ¶ci±gaæ i
-kompilowaæ du¿ych bibliotek za ka¿dym razem przy budowaniu pakietu -
-robi siê to tylko raz.
+%description -l pl.UTF-8
+skalibs to pakiet centralizujÄ…cy pliki programistyczne C bÄ™dÄ…ce
+wÅ‚asnoÅ›ciÄ… publicznÄ… (public-domain) uÅ¼ywane przez autora do tworzenia
+innego oprogramowania - zawiera istotne biblioteki ogÃ³lnego
+przeznaczenia. Trzeba zainstalowaÄ‡ ten pakiet, aby mÃ³c budowaÄ‡
+programy ze skarnet.org. Cel jest taki, Å¼e nie trzeba Å›ciÄ…gaÄ‡ i
+kompilowaÄ‡ duÅ¼ych bibliotek za kaÅ¼dym razem przy budowaniu pakietu -
+robi siÄ™ to tylko raz.
 
-skalibs mo¿na u¿ywaæ tak¿e przy rozpoczynaniu programowania w C. Jest
-tu wiele bibliotek ogólnego przeznaczenia; ale je¶li g³ównym celem
-jest tworzenie ma³ego i bezpiecznego kodu w C, skalibs jest dobrym
-rozwi±zaniem.
+skalibs moÅ¼na uÅ¼ywaÄ‡ takÅ¼e przy rozpoczynaniu programowania w C. Jest
+tu wiele bibliotek ogÃ³lnego przeznaczenia; ale jeÅ›li gÅ‚Ã³wnym celem
+jest tworzenie maÅ‚ego i bezpiecznego kodu w C, skalibs jest dobrym
+rozwiÄ…zaniem.
 
-skalibs zawiera wy³±cznie kod public-domain. Mo¿na go wiêc
-rozpowszechniaæ w dowolny sposób i nie przeszkadza to w
-rozpowszechnianiu w³asnych binarek.
+skalibs zawiera wyÅ‚Ä…cznie kod public-domain. MoÅ¼na go wiÄ™c
+rozpowszechniaÄ‡ w dowolny sposÃ³b i nie przeszkadza to w
+rozpowszechnianiu wÅ‚asnych binarek.
 
 %package devel
 Summary:	Header files and development documentation for skalibs
-Summary(pl):	Pliki nag³ówkowe i dokumentacja programisty do skalibs
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i dokumentacja programisty do skalibs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files and development documentation for skalibs.
 
-%description devel -l pl
-Pliki nag³ówkowe i dokumentacja programisty do skalibs.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe i dokumentacja programisty do skalibs.
 
 %package static
 Summary:	Static skalibs library
-Summary(pl):	Statyczna biblioteka skalibs
+Summary(pl.UTF-8):   Statyczna biblioteka skalibs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static skalibs library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka skalibs.
 
 %prep
