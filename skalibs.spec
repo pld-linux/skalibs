@@ -1,5 +1,5 @@
 Summary:	Essentially general-purpose libraries
-Summary(pl.UTF-8):   Istotne biblioteki ogólnego przeznaczenia
+Summary(pl.UTF-8):	Istotne biblioteki ogólnego przeznaczenia
 Name:		skalibs
 Version:	0.44
 Release:	1
@@ -47,7 +47,7 @@ rozpowszechnianiu własnych binarek.
 
 %package devel
 Summary:	Header files and development documentation for skalibs
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja programisty do skalibs
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja programisty do skalibs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -59,7 +59,7 @@ Pliki nagłówkowe i dokumentacja programisty do skalibs.
 
 %package static
 Summary:	Static skalibs library
-Summary(pl.UTF-8):   Statyczna biblioteka skalibs
+Summary(pl.UTF-8):	Statyczna biblioteka skalibs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
