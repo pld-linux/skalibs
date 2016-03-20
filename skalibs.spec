@@ -1,12 +1,12 @@
 Summary:	Essentially general-purpose libraries
 Summary(pl.UTF-8):	Istotne biblioteki ogólnego przeznaczenia
 Name:		skalibs
-Version:	1.4.2
+Version:	2.3.9.0
 Release:	1
 License:	ISC
 Group:		Libraries
 Source0:	http://www.skarnet.org/software/skalibs/%{name}-%{version}.tar.gz
-# Source0-md5:	e2bfa4447977024e1f2f91e9eb880baa
+# Source0-md5:	8cc1dfad59a588ba3956d78c81b5ea0a
 URL:		http://www.skarnet.org/software/skalibs/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,10 +73,11 @@ Static skalibs library.
 Statyczna biblioteka skalibs.
 
 %prep
-%setup -qc
-mv prog/%{name}-%{version}/* .
+%setup -q
 
 %build
+%configure
+%if 0
 echo "%{__cc} %{rpmcflags} -Wall" > conf-compile/conf-cc
 echo %{_bindir}:/bin > conf-compile/conf-defaultpath
 echo "%{__cc} %{rpmldflags}" > conf-compile/conf-dynld
@@ -86,6 +87,7 @@ echo "%{__cc} %{rpmldflags}" > conf-compile/conf-ld
 rm -f conf-compile/flag-slashpackage
 echo > conf-compile/stripbins
 echo > conf-compile/striplibs
+%endif
 
 %{__make}
 
