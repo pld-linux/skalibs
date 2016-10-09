@@ -1,13 +1,18 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static libraries
+
 Summary:	Essentially general-purpose libraries
 Summary(pl.UTF-8):	Istotne biblioteki ogólnego przeznaczenia
 Name:		skalibs
-Version:	2.3.9.0
+Version:	2.3.10.0
 Release:	1
 License:	ISC
 Group:		Libraries
-Source0:	http://www.skarnet.org/software/skalibs/%{name}-%{version}.tar.gz
-# Source0-md5:	8cc1dfad59a588ba3956d78c81b5ea0a
-URL:		http://www.skarnet.org/software/skalibs/
+Source0:	http://skarnet.org/software/skalibs/%{name}-%{version}.tar.gz
+# Source0-md5:	51cb8484896c68eb8d167767cdfc702e
+URL:		http://skarnet.org/software/skalibs/
+BuildRequires:	make >= 3.18
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # FIXME. temporarily disable. fix this later
@@ -75,25 +80,31 @@ Statyczna biblioteka skalibs.
 %prep
 %setup -q
 
+sed -i -e "s~tryldflag LDFLAGS_AUTO -Wl,--hash-style=both~:~" configure
+
 %build
-%configure
-%if 0
-echo "%{__cc} %{rpmcflags} -Wall" > conf-compile/conf-cc
-echo %{_bindir}:/bin > conf-compile/conf-defaultpath
-echo "%{__cc} %{rpmldflags}" > conf-compile/conf-dynld
-echo %{_libdir}/%{name} > conf-compile/conf-install-library
-echo %{_libdir}/%{name} > conf-compile/conf-install-library.so
-echo "%{__cc} %{rpmldflags}" > conf-compile/conf-ld
-rm -f conf-compile/flag-slashpackage
-echo > conf-compile/stripbins
-echo > conf-compile/striplibs
-%endif
+%configure \
+	--enable-ipv6 \
+	%{__enable_disable static-libs static_libs} \
+	--dynlibdir=%{_libdir} \
+	--libdir=%{_libdir} \
+	--datadir=%{_sysconfdir} \
+	--sysdepdir=%{_libdir}/%{name} \
+	--enable-force-devr
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_libdir},%{_includedir}/%{name}}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+# SONAME: libskarnet.so.2.3
+# so this is junk
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libskarnet.so.2.3.10
+
+%if 0
 cp -p etc/leapsecs.dat $RPM_BUILD_ROOT%{_sysconfdir}
 cp -a include/* $RPM_BUILD_ROOT%{_includedir}/%{name}
 
@@ -108,6 +119,7 @@ cp -a library/* $RPM_BUILD_ROOT%{_libdir}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libstdcrypto.so.1.4
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libstddjb.so.1.4
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libunixonacid.so.1.4
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -117,7 +129,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/COPYING
+%doc README COPYING AUTHORS
+%attr(755,root,root) %{_libdir}/libskarnet.so.2.3.10.0
+%ghost %{_libdir}/libskarnet.so.2.3
+%if 0
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/leapsecs.dat
 %attr(755,root,root) %{_libdir}/libbiguint.so.*.*.*
 %ghost %{_libdir}/libbiguint.so.1
@@ -131,18 +146,33 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libstddjb.so.1
 %attr(755,root,root) %{_libdir}/libunixonacid.so.*.*.*
 %ghost %{_libdir}/libunixonacid.so.1
+%endif
 
 %files devel
 %defattr(644,root,root,755)
+%doc doc/*
+%{_libdir}/libskarnet.so
+%if 0
 %{_libdir}/libbiguint.so
 %{_libdir}/libdatastruct.so
 %{_libdir}/librandom.so
 %{_libdir}/libstdcrypto.so
 %{_libdir}/libstddjb.so
 %{_libdir}/libunixonacid.so
+%endif
 %{_includedir}/skalibs
+%dir %{_libdir}/skalibs
+%{_libdir}/skalibs/rt.lib
+%{_libdir}/skalibs/socket.lib
+%{_libdir}/skalibs/sysclock.lib
+%{_libdir}/skalibs/sysdeps
+%{_libdir}/skalibs/sysdeps.h
+%{_libdir}/skalibs/tainnow.lib
+%{_libdir}/skalibs/target
+%{_libdir}/skalibs/util.lib
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
+%{_libdir}/libskarnet.a
 %endif
